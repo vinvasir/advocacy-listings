@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application will track nested sets of data and allow users to search
+for civic advocacy organizations based on issue areas and geographic location.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The inspiration for this app, as well as the initial URLs and the front-end theme, came from @codecourse / @alexgarrett 's excellent Classified Ads tutorial.
