@@ -3,22 +3,20 @@
         <div class="row">
           <% @countries.each do |country| %>
             <div class="col-md-12">
-                <h3><a href="#"><%= country.name %></a></h3>
-
+                <h3><%= link_to country.name, area_path(country) %></h3>
+                <h1><% if current_area %>Current Area: <%= current_area.name %><% end %></h1>
                 <hr>
 
                 <div class="row">
                     <% country.children.each do |region| %>
                         <div class="col-md-4">
-                            <h4><a href="#"><%= region.name %></a></h4>
+                            <h4><%= link_to region.name, area_path(region) %></h4>
 
                             <hr>
 
                             <% region.children.each do |metro| %>
                                 <h5>
-                                    <a href="#">
-                                        <%= metro.name %>
-                                    </a>
+                                    <%= link_to metro.name, area_path(metro) %>
                                 </h5>
                             <% end %>
                         </div>
