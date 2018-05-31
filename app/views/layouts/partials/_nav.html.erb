@@ -11,16 +11,14 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="/">
-                <!-- ({{ $area->name }}) -->
-            </a>
+            <%= link_to !!current_area ? current_area.name : 'Home', root_path, class: 'navbar-brand' %>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li>
-                    <!-- <a href="{{ route('categories.index', $area) }}">Categories</a> -->
+                    <%= link_to 'Categories', categories_path(current_area) if !!current_area %>
                 </li>
             </ul>
 

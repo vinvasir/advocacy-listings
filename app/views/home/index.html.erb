@@ -4,7 +4,6 @@
           <% @countries.each do |country| %>
             <div class="col-md-12">
                 <h3><%= link_to country.name, area_path(country) %></h3>
-                <h1><% if current_area %>Current Area: <%= current_area.name %><% end %></h1>
                 <hr>
 
                 <div class="row">
