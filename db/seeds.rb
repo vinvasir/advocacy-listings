@@ -6,29 +6,46 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-areas = {
-  name: "United States",
-  children: [
-    {
-      name: "East Coast"
-    },
-    {
-      name: "Midwest"
-    },
-    {
-      name: "South"
-    },
-    {
-      name: "West Coast",
-      children: [
-        {
-          name: "Los Angeles"
-        }
-      ]
-    }
-  ]
-}
+areas = [
+  {
+    name: "United States",
+    children: [
+      {
+        name: "East Coast",
+        children: [
+        ]
+      },
+      {
+        name: "Midwest",
+        children: [
+        ]
+      },
+      {
+        name: "South",
+        children: [
+        ]
+      },
+      {
+        name: "West Coast",
+        children: [
+          {
+            name: "Los Angeles"
+          }
+        ]
+      }
+    ]
+  }
+]
 
-areas.each do |key, name|
+areas.each do |country_hash|
+  country = Area.create!(name: area_hash[:name])
 
+  area_hash[:children].each do |region_hash|
+    region = country.children.create!(name: region_hash[:name])
+
+    region_hash.children.each do |metro_hash|
+      metro_area = region.children.create!(name: metro_hash[:name])
+
+    end
+  end
 end
