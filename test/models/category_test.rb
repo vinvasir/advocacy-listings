@@ -33,4 +33,11 @@ class CategoryTest < ActiveSupport::TestCase
     assert_equal "zoning", @zoning.slug
     assert_equal "affordable-housing", @affordable_housing.slug
   end
+
+  test "should not allow duplicate slugs" do
+    @zoning_2 = Category.new(name: "Zoning")
+
+    assert_not @zoning_2.save
+    assert_not @zoning_2.valid?
+  end
 end

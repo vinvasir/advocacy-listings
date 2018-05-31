@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180531225137) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ancestry"], name: "index_areas_on_ancestry"
-    t.index ["slug"], name: "index_areas_on_slug"
+    t.index ["slug"], name: "index_areas_on_slug", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20180531225137) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ancestry"], name: "index_categories_on_ancestry"
-    t.index ["slug"], name: "index_categories_on_slug"
+    t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
 end

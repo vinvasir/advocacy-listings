@@ -1,7 +1,10 @@
 class Category < ApplicationRecord
   has_ancestry
 
+  include Slugable
+
   after_initialize :set_prefixed_slug
 
-  include Slugable
+  validates_presence_of :name, :slug
+  validates_uniqueness_of :slug
 end
