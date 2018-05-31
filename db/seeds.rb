@@ -13,21 +13,99 @@ areas = [
       {
         name: "East Coast",
         children: [
+          {
+            name: "Boston"
+          },
+          {
+            name: "Buffalo"
+          },
+          {
+            name: "Maine"
+          },
+          {
+            name: "New York City"
+          },
+          {
+            name: "Pittsburgh"
+          },
+          {
+            name: "Rhode Island"
+          }
         ]
       },
       {
         name: "Midwest",
         children: [
+          {
+            name: "Chicago"
+          },
+          {
+            name: "Cleveland"
+          },
+          {
+            name: "Columbus"
+          },
+          {
+            name: "Michigan"
+          },
+          {
+            name: "Milwaukee"
+          },
+          {
+            name: "Minnesota"
+          },
+          {
+            name: "Omaha"
+          }
         ]
       },
       {
         name: "South",
         children: [
+          {
+            name: "Atlanta"
+          },
+          {
+            name: "Austin"
+          },
+          {
+            name: "Miami"
+          },
+          {
+            name: "Nashville"
+          },
+          {
+            name: "New Orleans"
+          },
+          {
+            name: "St. Louis"
+          }
         ]
       },
       {
         name: "West Coast",
         children: [
+          {
+            name: "California"
+          },
+          {
+            name: "Bay Area"
+          },
+          {
+            name: "Colorado"
+          },
+          {
+            name: "Nevada"
+          },
+          {
+            name: "Oregon"
+          },
+          {
+            name: "Seattle"
+          },
+          {
+            name: "San Diego"
+          },
           {
             name: "Los Angeles"
           }
@@ -37,15 +115,4 @@ areas = [
   }
 ]
 
-areas.each do |country_hash|
-  country = Area.create!(name: area_hash[:name])
-
-  area_hash[:children].each do |region_hash|
-    region = country.children.create!(name: region_hash[:name])
-
-    region_hash.children.each do |metro_hash|
-      metro_area = region.children.create!(name: metro_hash[:name])
-
-    end
-  end
-end
+AreaSeeder.new(areas).run
