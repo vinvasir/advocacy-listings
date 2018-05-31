@@ -3,15 +3,5 @@ class Category < ApplicationRecord
 
   after_initialize :set_prefixed_slug
 
-  private
-
-  def set_prefixed_slug
-    slug = self.name.downcase.split(" ").join("-")
-
-    unless self.is_root? || self.parent.is_root?
-      slug = parent.slug + '-' + slug
-    end
-
-    write_attribute(:slug, slug)
-  end
+  include Slugable
 end
