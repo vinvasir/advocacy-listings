@@ -3,6 +3,8 @@ class Area < ApplicationRecord
 
   after_initialize :set_prefixed_slug
 
+  validates_uniqueness_of :name, :slug
+
   def set_prefixed_slug
     slug = self.name.downcase.split(' ').join('-')
 
