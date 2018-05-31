@@ -5,3 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+areas = {
+  name: "United States",
+  children: [
+    {
+      name: "East Coast"
+    },
+    {
+      name: "Midwest"
+    },
+    {
+      name: "South"
+    },
+    {
+      name: "West Coast",
+      children: [
+        {
+          name: "Los Angeles"
+        }
+      ]
+    }
+  ]
+}
+
+areas.each do |key, name|
+
+end
