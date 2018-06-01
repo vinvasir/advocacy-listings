@@ -18,7 +18,7 @@ class OrganizationsController < ApplicationController
 
     if @organization.save
       flash[:success] = "Organization successfully created"
-      redirect_to organization_path(@area, @organization)
+      redirect_to area_organization_path(@area, @organization)
     else
       render :new
     end
@@ -31,7 +31,7 @@ class OrganizationsController < ApplicationController
   def update
     if @organization.update(org_params)
       flash[:success] = "Organization successfully updated"
-      redirect_to organization_path(@area, @organization)
+      redirect_to area_organization_path(@area, @organization)
     else
       render :edit
     end
