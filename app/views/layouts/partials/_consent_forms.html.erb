@@ -5,7 +5,7 @@
     <div class="panel panel-default">
       <%= @cookie %>
 
-      <form action="/policies/user_terms/cookie/accept" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="<%=  %>">
+      <form action="/policies/user_terms/cookie/accept" accept-charset="UTF-8" method="post"><input name"=utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="<%=  %>">
               <input type="submit" name="commit" value="Accept" class="btn btn-success" data-disable-with="Accept">
               <a class="btn btn-secondary" href="/policies/user_terms/pending">No not now</a>
       </form>

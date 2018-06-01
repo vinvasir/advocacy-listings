@@ -39,4 +39,12 @@ class ApplicationController < ActionController::Base
       @privacy_terms = PolicyManager::Term.where(rule: "privacy_terms").last.description
     end
   end
+
+  def current_user_has_consented_to_all?
+    return unless current_user
+
+    (current_user.has_consented_cookie? &&
+     current_user.has_consented_age? &&
+     current_user.has_consented_privacy_terms?)
+  end
 end

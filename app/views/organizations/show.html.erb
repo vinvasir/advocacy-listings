@@ -19,7 +19,15 @@
 
         <hr>
 
-        <p>Viewed X times</p>
+        <% if @organization.submitter %>
+          <p>
+            <small>
+              Submitted by <%= @organization.submitter.email %>
+            </small>
+          </p>
+        <% end %>
+        
+        <p><small>Viewed X times</small></p>
       </div>
     </div>    
   </div>

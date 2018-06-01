@@ -16,6 +16,10 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(org_params)
 
+    if current_user_has_consented_to_all?
+      @organization.submitter = current_user
+    end
+
     if @organization.save
       flash[:success] = "Organization successfully created"
       redirect_to area_organization_path(@area, @organization)

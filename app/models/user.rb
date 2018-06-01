@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   include PolicyManager::Concerns::UserBehavior
 
+  has_many :organizations, dependent: :nullify
+
   def is_admin?
     email == "prat.vasireddy@gmail.com"
   end
