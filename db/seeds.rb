@@ -115,4 +115,90 @@ areas = [
   }
 ]
 
+categories = [
+  {
+    name: "Diversity and Inclusion",
+    children: [
+      {
+        name: "Racial Justice",
+        children: [
+          {
+            name: "Workplace Discrimination"
+          },
+          {
+            name: "Educational Equity"
+          },
+          {
+            name: "Immigration Policy"
+          }
+        ]
+      },
+      {
+        name: "Gender Identity",
+        children: [
+          {
+            name: "Workplace Discrimination"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Urban Planning",
+    children: [
+      {
+        name: "Transportation",
+        children: [
+          {
+            name: "Public Transit"
+          },
+          {
+            name: "Cycling"
+          },
+          {
+            name: "Walkability"
+          }
+        ]
+      },
+      {
+        name: "Zoning",
+        children: [
+        ]
+      },
+      {
+        name: "Housing",
+        children: [
+          {
+            name: "Affordable Housing"
+          },
+          {
+            name: "Homelessness"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Health",
+    children: [
+      {
+        name: "Childhood Cancer",
+        children: [
+          {
+            name: "Bills / Expenses"
+          },
+          {
+            name: "Emotional Support"
+          },
+          {
+            name: "Travel for Treatment"
+          }
+        ]
+      },
+
+    ]
+  }
+]
+
 AreaSeeder.new(areas).run
+CategorySeeder.new(categories).run
