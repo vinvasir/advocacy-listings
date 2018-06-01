@@ -29,6 +29,8 @@ class OrganizationsController < ApplicationController
   end
 
   def update
+    @organization = Organization.find_by(id: params[:id])
+    
     if @organization.update(org_params)
       flash[:success] = "Organization successfully updated"
       redirect_to area_organization_path(@area, @organization)
