@@ -1,7 +1,8 @@
 <% if current_user %>
 
   <% unless current_user.has_consented_cookie? %>
-    <div>
+    <hr>
+    <div class="panel panel-default">
       <%= @cookie %>
 
       <form action="/policies/user_terms/cookie/accept" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="<%=  %>">
@@ -12,7 +13,8 @@
   <% end %>
 
   <% unless current_user.has_consented_age? %>
-    <div>
+    <hr>
+    <div class="panel panel-default">
       <%= @age %>
 
       <form action="/policies/user_terms/age/accept" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="<%= %>">
@@ -23,7 +25,8 @@
   <% end %>
 
   <% unless current_user.has_consented_privacy_terms? %>
-    <div>
+    <hr>
+    <div class="panel panel-default">
       <%= @privacy_terms %>
 
       <form action="/policies/user_terms/privacy_terms/accept" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="<%= %>">
