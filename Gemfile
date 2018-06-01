@@ -11,6 +11,9 @@ gem 'ancestry'
 # Use pry for debugging
 gem 'pry'
 
+# Use devise for auth
+gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use postgresql as the database for Active Record
