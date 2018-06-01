@@ -7,4 +7,6 @@ class Area < ApplicationRecord
 
   validates_presence_of :name, :slug
   validates_uniqueness_of :slug
+
+  has_many :organizations
 end
