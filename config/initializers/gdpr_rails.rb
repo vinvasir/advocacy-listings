@@ -11,4 +11,9 @@ config = PolicyManager::Config.setup do |c|
     o.is_admin?
   }
 
+  c.add_rule({name: "cookie", sessionless: true }  )
+  c.add_rule({name: "age", validates_on: [:create, :update], blocking: true })
+  c.add_rule({name: "privacy_terms", validates_on: [:create, :update], blocking: true })
 end
+
+PolicyManager::UserTermsController.send(:include, Devise::Controllers::Helpers)
