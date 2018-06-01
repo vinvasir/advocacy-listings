@@ -14,6 +14,9 @@ gem 'pry'
 # Use devise for auth
 gem 'devise'
 
+# Use figaro for local environment variables
+gem "figaro"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use postgresql as the database for Active Record
