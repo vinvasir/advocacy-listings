@@ -1,16 +1,26 @@
 class DeviseCustom::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    # super
+    @user_registration = UserRegistration.new(User.new)
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    # binding.pry
+    # super
+    @user_registration = UserRegistration.new(User.new, sign_up_params)
+    if @user_registration.save
+      flash[:success] = "Successfully registered. Please check your email for confirmation instructions."
+      session[:user_id] = @user_registration.user.id
+      redirect_to pending_user_terms_path
+    else
+      render :new
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -36,12 +46,12 @@ class DeviseCustom::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:remember_me, :consent_cookie, :consent_age, :consent_privacy_terms])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

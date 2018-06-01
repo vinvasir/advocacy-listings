@@ -1,2 +1,22 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if !!current_user && current_user.pending_policies.length > 0 %>
+      <div class="alert alert-danger">
+          <h2>IMPORTANT: You have pending privacy agreements</h2>
+          <h4><%= link_to "Click Here", pending_user_terms_path %> to view them.</h4>
+      </div>
+        
+    <% end %>
+
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name %>">
+        <a href="#" data-dismiss="alert">&#215;</a>
+        <%= msg %>
+      </div>
+      
+    <% end %>
+  </div>
+</div>

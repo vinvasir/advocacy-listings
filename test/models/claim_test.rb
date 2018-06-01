@@ -14,8 +14,11 @@ class ClaimTest < ActiveSupport::TestCase
     user_3 = User.new(email: "user3@example.com", password: "password", password_confirmation: "password")
 
     [user_1, user_2, user_3].each do |u| 
-      u.pending_policies
-      # binding.pry
+      u.pending_policies.each do |c|
+        c.terms.each do |term|
+          u.handle_policy_for(term).accept!
+        end
+      end
       u.save
     end
 

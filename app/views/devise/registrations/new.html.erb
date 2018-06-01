@@ -2,8 +2,14 @@
 
 <h2>Sign up</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+  <div class="alert">
+    <% @user_registration.user.errors.full_messages.each do |msg| %>
+      <p class="alert alert-danger"><%= msg %></p>
+    <% end %>
+  </div>
+
+  <%= form_for(@user_registration, as: resource_name, url: registration_path(@user_registration.user)) do |f| %>
+    
 
     <div class="form-group">
         <%= f.label :email %>
@@ -27,6 +33,26 @@
           <%= f.label :password_confirmation %>
       
           <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+    </div>
+
+    <div class="form-group">
+        <%= f.check_box :consent_cookie %>
+        <%= f.label :consent_cookie %>
+    </div>
+
+    <div class="form-group">
+        <%= f.check_box :consent_age %>
+        <%= f.label :consent_age %>
+    </div>
+
+    <div class="form-group">
+        <%= f.check_box :consent_privacy_terms %>
+        <%= f.label :consent_privacy_terms %>
     </div>
 
     <div class="form-group">

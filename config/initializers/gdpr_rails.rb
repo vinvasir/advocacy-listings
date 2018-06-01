@@ -11,7 +11,7 @@ config = PolicyManager::Config.setup do |c|
     o.is_admin?
   }
 
-  c.add_rule({name: "cookie", sessionless: true, on_reject: ->(context){
+  c.add_rule({name: "cookie", sessionless: true, validates_on: [:update], on_reject: ->(context){
       PolicyManager::Script.cookies
       .select{|o| !o.permanent }
       .each{|o|
@@ -22,8 +22,8 @@ config = PolicyManager::Config.setup do |c|
     }
   })
   
-  c.add_rule({name: "age", validates_on: [:update], blocking: true })
-  c.add_rule({name: "privacy_terms", validates_on: [:update], blocking: true })
+  c.add_rule({name: "age", validates_on: [:update], blocking: false })
+  c.add_rule({name: "privacy_terms", validates_on: [:update], blocking: false })
 end
 
 PolicyManager::UserTermsController.send(:include, Devise::Controllers::Helpers)
