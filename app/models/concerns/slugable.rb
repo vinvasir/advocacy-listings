@@ -1,5 +1,9 @@
 module Slugable
 
+  def to_param
+    slug
+  end
+
   private
 
   def set_prefixed_slug

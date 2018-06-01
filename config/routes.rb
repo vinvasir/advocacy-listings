@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  get '/session/areas/:id', to: 'session/areas#create', as: 'area'
+  get '/session/areas/:slug', to: 'session/areas#create', as: 'area'
 
-  get '/areas/:id', to: 'categories#index', as: 'categories' do
-
-    get '/listings/:id', to: 'listings#show'
+  resources :areas, only: :show do
+    resources :categories, only: [:index, :show] do
+      resources :listings, only: [:index, :show]
+    end
   end
 end

@@ -1,1 +1,20 @@
-<h1><% if current_area %>Current Area: <%= current_area.name %><% end %></h1>
+<div class="row">
+  <% @categories.each do |category| %>
+    <div class="col-md-4">
+      <h5><%= category.name %></h5>
+      <hr>
+
+      <% category.children.each do |inter| %>
+        <h5><%= link_to inter.name, area_category_listings_path(@area, inter), class: 'bold-link' %> <!-- listings count --></h5>
+
+        <div class="row">
+          <% inter.children.each do |sub| %>
+            <div class="col-md-4">
+              <h6><%= link_to sub.name, area_category_listings_path(@area, sub), class: 'small-link' %> <!-- listings count --></h6>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
