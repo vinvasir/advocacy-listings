@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180601185544) do
+ActiveRecord::Schema.define(version: 20180601190808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 20180601185544) do
     t.datetime "updated_at", null: false
     t.index ["ancestry"], name: "index_categories_on_ancestry"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "claims", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "organization_id"
+    t.text "reason"
+    t.boolean "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_claims_on_organization_id"
+    t.index ["user_id", "organization_id"], name: "index_claims_on_user_id_and_organization_id", unique: true
+    t.index ["user_id"], name: "index_claims_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -100,6 +112,8 @@ ActiveRecord::Schema.define(version: 20180601185544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "claims", "organizations"
+  add_foreign_key "claims", "users"
   add_foreign_key "organizations", "areas"
   add_foreign_key "organizations", "categories"
 end

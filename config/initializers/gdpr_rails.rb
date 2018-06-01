@@ -22,8 +22,8 @@ config = PolicyManager::Config.setup do |c|
     }
   })
   
-  c.add_rule({name: "age", validates_on: [:create, :update], blocking: true })
-  c.add_rule({name: "privacy_terms", validates_on: [:create, :update], blocking: true })
+  c.add_rule({name: "age", validates_on: [:update], blocking: true })
+  c.add_rule({name: "privacy_terms", validates_on: [:update], blocking: true })
 end
 
 PolicyManager::UserTermsController.send(:include, Devise::Controllers::Helpers)

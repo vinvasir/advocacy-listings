@@ -6,7 +6,9 @@ class User < ApplicationRecord
 
   include PolicyManager::Concerns::UserBehavior
 
-  has_many :organizations, dependent: :nullify
+  has_many :submitted_organizations, class_name: "Organization", foreign_key: "organization_id", dependent: :nullify
+  has_many :claims
+  has_many :claimed_organizations, through: :claims, source: "organization_id"
 
   def is_admin?
     email == "prat.vasireddy@gmail.com"
