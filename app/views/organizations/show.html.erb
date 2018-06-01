@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <nav class="nav nav-stacked">
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4><%= @organization.title %> <span class="text-muted">in <%= @organization.area.name %> -> <%= @organization.category.name %></span></h4>
+      </div>
+
+      <div class="panel-body">
+        <%= @organization.mission %>
+
+        <hr>
+
+        <p>Viewed X times</p>
+      </div>
+    </div>    
+  </div>
+</div>

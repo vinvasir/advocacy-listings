@@ -9,7 +9,37 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new
   end
 
+  def show
+    @organization = Organization.find_by(id: params[:id])
+  end
+
+  def create
+    @organization = Organization.new(org_params)
+
+    if @organization.save
+      flash[:success] = "Organization successfully created"
+      redirect_to organization_path(@area, @organization)
+    else
+      render :new
+    end
+  end
+
   def edit
     @organization = Organization.find_by(id: params[:id])
   end
+
+  def update
+    if @organization.update(org_params)
+      flash[:success] = "Organization successfully updated"
+      redirect_to organization_path(@area, @organization)
+    else
+      render :edit
+    end
+  end
+
+  private
+
+    def org_params
+      params.require(:organization).permit(:title, :area_id, :category_id, :mission)
+    end
 end

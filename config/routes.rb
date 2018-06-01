@@ -8,6 +8,6 @@ Rails.application.routes.draw do
       resources :organizations, only: [:index, :show]
     end
 
-    resources :organizations, only: [:new, :create, :edit, :update]
+    resources :organizations, only: [:show, :new, :create, :edit, :update]
   end
 end
