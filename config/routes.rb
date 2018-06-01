@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :show] do
       resources :organizations, only: [:index, :show]
     end
+
+    resources :organizations, only: [:new, :create, :edit, :update]
   end
 end
