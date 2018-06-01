@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   get '/session/areas/:slug', to: 'session/areas#create', as: 'area'
 
   resources :areas, only: :show do
-    resources :categories, only: [:index, :show] do
-      resources :organizations, only: [:index, :show]
+    member do
+      get '/categories', to: 'categories#index'
+      get '/categories/:category_id', to: 'categories#show'
     end
 
     resources :organizations, only: [:show, :new, :create, :edit, :update]
   end
+
+  get '/categories/:id/organizations', to: 'organizations#index', as: 'category_organizations'
 end

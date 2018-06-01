@@ -5,7 +5,7 @@ module Session
 
       session[:area_id] = @area.id if @area
 
-      redirect_to area_categories_path(@area)
+      redirect_to categories_area_path(@area)
     end
   end
 end

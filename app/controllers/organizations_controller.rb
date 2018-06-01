@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
   def index
-    @category = Category.find_by(slug: params[:category_id])
+    @category = Category.find_by(slug: params[:id])
 
     @organizations = Organization.in_area(@area).from_category(@category)
   end
@@ -30,7 +30,7 @@ class OrganizationsController < ApplicationController
 
   def update
     @organization = Organization.find_by(id: params[:id])
-    
+
     if @organization.update(org_params)
       flash[:success] = "Organization successfully updated"
       redirect_to area_organization_path(@area, @organization)

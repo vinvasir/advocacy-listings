@@ -5,12 +5,12 @@
       <hr>
 
       <% category.children.each do |inter| %>
-        <h5><%= link_to inter.name, area_category_organizations_path(@area, inter), class: 'bold-link' %> <!-- listings count --></h5>
+        <h5><%= link_to inter.name, category_organizations_path(inter), class: 'bold-link' %> <!-- listings count --></h5>
 
         <div class="row">
           <% inter.children.each do |sub| %>
             <div class="col-md-4">
-              <h6><%= link_to sub.name, area_category_organizations_path(@area, sub), class: 'small-link' %> <!-- listings count --></h6>
+              <h6><%= link_to sub.name, category_organizations_path(sub), class: 'small-link' %> <!-- listings count --></h6>
             </div>
           <% end %>
         </div>
