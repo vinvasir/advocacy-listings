@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'home#index'
 
   get '/session/areas/:slug', to: 'session/areas#create', as: 'area'
