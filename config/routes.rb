@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  
+  mount PolicyManager::Engine => "/policies"
+
   root 'home#index'
 
   get '/session/areas/:slug', to: 'session/areas#create', as: 'area'
