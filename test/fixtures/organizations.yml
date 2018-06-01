@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  mission: MyText
+  area: one
+  category: one
+  live: false
+
+two:
+  title: MyString
+  mission: MyText
+  area: two
+  category: two
+  live: false

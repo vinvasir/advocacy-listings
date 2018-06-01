@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180531225137) do
+ActiveRecord::Schema.define(version: 20180601002755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,4 +35,18 @@ ActiveRecord::Schema.define(version: 20180531225137) do
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
+  create_table "organizations", force: :cascade do |t|
+    t.string "title"
+    t.text "mission"
+    t.bigint "area_id"
+    t.bigint "category_id"
+    t.boolean "live", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_organizations_on_area_id"
+    t.index ["category_id"], name: "index_organizations_on_category_id"
+  end
+
+  add_foreign_key "organizations", "areas"
+  add_foreign_key "organizations", "categories"
 end

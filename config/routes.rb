@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :areas, only: :show do
     resources :categories, only: [:index, :show] do
-      resources :listings, only: [:index, :show]
+      resources :organizations, only: [:index, :show]
     end
   end
 end
