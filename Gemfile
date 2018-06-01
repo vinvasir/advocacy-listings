@@ -14,6 +14,9 @@ gem 'pry'
 # Use devise for auth
 gem 'devise'
 
+# Use the GDPR Rails gem to help with compliance
+gem 'gdpr_rails'
+
 # Use figaro for local environment variables
 gem "figaro"
 
