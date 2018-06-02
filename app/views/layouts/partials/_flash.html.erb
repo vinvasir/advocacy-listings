@@ -6,7 +6,7 @@
     <% if !!current_user && current_user.pending_policies.length > 0 %>
       <div class="alert alert-danger">
           <h2>IMPORTANT: You have pending privacy agreements</h2>
-          <h4><%= link_to "Click Here", pending_user_terms_path %> to view them.</h4>
+          <h4><%= link_to "Click Here", policies.pending_user_terms_path %> to view them.</h4>
       </div>
         
     <% end %>

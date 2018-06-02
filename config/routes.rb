@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'devise_custom/registrations' }
 
-  mount PolicyManager::Engine => "/policies"
+  mount PolicyManager::Engine => "/policies", as: 'policies'
 
   root 'home#index'
 
