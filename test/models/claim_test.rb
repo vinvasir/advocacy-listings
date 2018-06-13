@@ -5,22 +5,9 @@ class ClaimTest < ActiveSupport::TestCase
     usa = Area.create!(name: "United States")
     health = Category.create!(name: "Health")
 
-    PolicyManager::Term.create!(rule: "cookie", state: "published", description: "whatever")
-    PolicyManager::Term.create!(rule: "age", state: "published", description: "whatever")
-    PolicyManager::Term.create!(rule: "privacy_terms", state: "published", description: "whatever")
-
-    user_1 = User.new(email: "user@example.com", password: "password", password_confirmation: "password")
-    user_2 = User.new(email: "user2@example.com", password: "password", password_confirmation: "password")
-    user_3 = User.new(email: "user3@example.com", password: "password", password_confirmation: "password")
-
-    [user_1, user_2, user_3].each do |u| 
-      u.pending_policies.each do |c|
-        c.terms.each do |term|
-          u.handle_policy_for(term).accept!
-        end
-      end
-      u.save
-    end
+    user_1 = FactoryBot.create(:user)
+    user_2 = FactoryBot.create(:user)
+    user_3 = FactoryBot.create(:user)
 
 
     @org = user_1.submitted_organizations.create!(title: "Some org", mission: "who knows?", area: usa, category: health)

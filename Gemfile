@@ -19,6 +19,8 @@ gem 'gdpr_rails'
 
 # Use factory bot to create test data
 gem 'factory_bot'
+# Use Faker for fake data
+gem 'faker'
 
 # Use figaro for local environment variables
 gem "figaro"
