@@ -14,6 +14,7 @@ class OrganizationsController < ApplicationController
 
     if !!current_user
       @favorite = Favorite.where(favoritable: @organization, user: current_user).first
+      @claim = Claim.where(organization: @organization).first
     end
   end
 

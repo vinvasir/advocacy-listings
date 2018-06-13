@@ -20,7 +20,7 @@
               </li>
             <% else %>
               <li role="presentation">
-                <%= link_to "Withdraw claim", organization_claim_path(@organization, @favorite), class: "btn danger", method: :delete %>
+                <%= link_to "Withdraw claim", organization_claim_path(@organization, @claim), class: "btn danger", method: :delete %>
               </li>
             <% end %>            
           <% end %>
