@@ -10,8 +10,9 @@ class ClaimTest < ActiveSupport::TestCase
     user_3 = FactoryBot.create(:user)
 
 
-    @org = user_1.submitted_organizations.create!(title: "Some org", mission: "who knows?", area: usa, category: health)
-
+    @org = FactoryBot.build(:organization)
+    user_1.submitted_organizations << @org
+    
     user_2.claim(@org)
     user_3.claim(@org)
 
