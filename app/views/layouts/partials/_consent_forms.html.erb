@@ -1,6 +1,6 @@
 <% if current_user %>
 
-  <% unless current_user.has_consented_cookie? %>
+  <% if show_cookie_form?(current_user) %>
     <hr>
     <div class="panel panel-default">
       <%= @cookie %>
@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <% unless current_user.has_consented_age? %>
+  <% if show_age_form?(current_user) %>
     <hr>
     <div class="panel panel-default">
       <%= @age %>
@@ -24,7 +24,7 @@
     </div>
   <% end %>
 
-  <% unless current_user.has_consented_privacy_terms? %>
+  <% if show_privacy_form?(current_user) %>
     <hr>
     <div class="panel panel-default">
       <%= @privacy_terms %>

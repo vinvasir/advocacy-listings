@@ -16,7 +16,7 @@ class DeviseCustom::RegistrationsController < Devise::RegistrationsController
     if @user_registration.save
       flash[:success] = "Successfully registered. Please check your email for confirmation instructions."
       session[:user_id] = @user_registration.user.id
-      redirect_to pending_user_terms_path
+      redirect_to root_path
     else
       render :new
     end
