@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180601190808) do
+ActiveRecord::Schema.define(version: 20180613125740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20180601190808) do
     t.index ["organization_id"], name: "index_claims_on_organization_id"
     t.index ["user_id", "organization_id"], name: "index_claims_on_user_id_and_organization_id", unique: true
     t.index ["user_id"], name: "index_claims_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "favoritable_id"
+    t.string "favoritable_type"
+    t.index ["favoritable_id", "favoritable_type"], name: "index_favorites_on_favoritable_id_and_favoritable_type"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -114,6 +122,7 @@ ActiveRecord::Schema.define(version: 20180601190808) do
 
   add_foreign_key "claims", "organizations"
   add_foreign_key "claims", "users"
+  add_foreign_key "favorites", "users"
   add_foreign_key "organizations", "areas"
   add_foreign_key "organizations", "categories"
 end
