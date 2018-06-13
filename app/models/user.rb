@@ -11,10 +11,14 @@ class User < ApplicationRecord
   has_many :claimed_organizations, through: :claims, source: :organization
 
   has_many :favorites
-  has_many :favorite_organizations, through: :favorites, as: :favoritable
+  has_many :favorite_organizations, through: :favorites, source: :favoritable, source_type: "Organization"
 
   def claim(organization)
     claimed_organizations << organization
+  end
+
+  def favorite(organization)
+    favorite_organizations << organization
   end
 
   def is_admin?
