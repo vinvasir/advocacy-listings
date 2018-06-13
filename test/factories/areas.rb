@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :area do
+    initialize_with { new(name: Faker::Address.city) }
+  end
+
   factory :root_area, class: Area do
     initialize_with { new(name: "United States") }
 
