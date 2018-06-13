@@ -17,6 +17,9 @@ gem 'devise'
 # Use the GDPR Rails gem to help with compliance
 gem 'gdpr_rails'
 
+# Use factory bot to create test data
+gem 'factory_bot'
+
 # Use figaro for local environment variables
 gem "figaro"
 

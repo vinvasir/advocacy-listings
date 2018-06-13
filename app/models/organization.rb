@@ -7,7 +7,7 @@ class Organization < ApplicationRecord
   has_many :favoriters, through: :favorites, source: "user_id"
 
   has_many :claims
-  has_many :claimants, through: :claims, class_name: "User", source: "user_id"
+  has_many :claimants, through: :claims, class_name: "User", source: :user
 
   scope :in_area, -> (area) { where(area_id: area.descendant_ids.push(area.id)) }
   scope :from_category, -> (category) { where(category_id: category.descendant_ids.push(category.id)) }

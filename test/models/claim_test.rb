@@ -28,12 +28,12 @@ class ClaimTest < ActiveSupport::TestCase
     user_2.claim(@org)
     user_3.claim(@org)
 
-    assert_includes user_2.claimed_organizations, @org
-    assert_includes user_3.claimed_organizations, @org
-    refute_includes user_1.claimed_organizations, @org
-    assert_includes @org.claimants, user_2
-    assert_includes @org.claimants, user_3
-    refute_includes @org.claimants, user_1
+    assert_includes user_2.reload.claimed_organizations, @org
+    assert_includes user_3.reload.claimed_organizations, @org
+    refute_includes user_1.reload.claimed_organizations, @org
+    assert_includes @org.reload.claimants, user_2
+    assert_includes @org.reload.claimants, user_3
+    refute_includes @org.reload.claimants, user_1
     assert_equal @org.submitter, user_1
     assert_includes user_1.submitted_organizations, @org
   end

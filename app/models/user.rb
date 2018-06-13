@@ -8,10 +8,14 @@ class User < ApplicationRecord
 
   has_many :submitted_organizations, class_name: "Organization", foreign_key: "user_id", dependent: :nullify
   has_many :claims
-  has_many :claimed_organizations, through: :claims, source: "organization_id"
+  has_many :claimed_organizations, through: :claims, source: :organization
 
   has_many :favorites
   has_many :favorite_organizations, through: :favorites, as: :favoritable
+
+  def claim(organization)
+    claimed_organizations << organization
+  end
 
   def is_admin?
     email == "prat.vasireddy@gmail.com"
