@@ -27,4 +27,11 @@ class FavoriteTest < ActiveSupport::TestCase
     refute_includes @org.favoriters, @user_3
     refute_includes @user_3.favorite_organizations, @org
   end
+
+  test "should not allow duplicate favoriting" do
+    @user_3.favorite @org
+    @user_3.favorite @org
+
+    assert_equal 1, @user_3.favorites.where(favoritable: @org).count
+  end
 end

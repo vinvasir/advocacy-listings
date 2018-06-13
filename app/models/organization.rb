@@ -5,7 +5,7 @@ class Organization < ApplicationRecord
 
   has_many :favorites, as: :favoritable
   has_many :favoriters, through: :favorites, source: :user
-
+  
   has_many :claims
   has_many :claimants, through: :claims, class_name: "User", source: :user
 
