@@ -3,6 +3,9 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <nav class="nav nav-stacked">
+          <li>
+            <%= link_to "Add to favorites", favorites_path(@organization), method: :post %>
+          </li>          
         </nav>
       </div>
     </div>
