@@ -17,12 +17,12 @@ Rails.application.routes.draw do
   end
 
   namespace :profile do
+    resources :own_organizations, only: [:index]    
     resources :favorite_organizations, only: [:index]
     resources :claimed_organizations, only: [:index]
   end
 
   resources :organizations, only: [] do
-    resources :own_organizations, only: [:index]
     resources :claims, only: [:create, :show, :destroy]
     resources :favorites, only: [:create, :destroy]
   end

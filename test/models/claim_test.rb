@@ -43,8 +43,11 @@ class ClaimTest < ActiveSupport::TestCase
     Claim.where(user: @user_2, organization: @org).first.update(approved: true)
     Claim.where(user: @user_2, organization: org_2).first.update(approved: true)
 
-    assert_includes @user_2.own_organizations,@org 
+    assert_includes @user_2.own_organizations, @org 
     assert_includes @user_2.own_organizations, org_2
+
     refute_includes @user_2.own_organizations, org_3
+    refute_includes @user_2.pending_claimed_organizations, @org
+    refute_includes @user_2.pending_claimed_organizations, org_2
   end
 end

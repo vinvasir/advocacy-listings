@@ -21,6 +21,10 @@ class User < ApplicationRecord
     approved_claims.includes(:organization).map(&:organization)
   end
 
+  def pending_claimed_organizations  
+    claims.where.not(approved: true).includes(:organization).map(&:organization)
+  end
+
   has_many :favorites
   has_many :favorite_organizations, through: :favorites, source: :favoritable, source_type: "Organization"
 
