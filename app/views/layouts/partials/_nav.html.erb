@@ -44,15 +44,15 @@
                             </li>
 
                             <li>
+                               <%= link_to "Your Owned Orgs", profile_own_organizations_path %>
+                            </li>
+
+                            <li>
                                 <%= link_to "Pending Claims", profile_claimed_organizations_path %>
                             </li>
 
                             <li>
                                 <%= link_to "Favorite Organizations", profile_favorite_organizations_path %>
-                            </li>
-
-                            <li>
-                               <!--  <a href="{{ route('listings.published.index', [$area]) }}">Your Published Listings ({{ $publishedCount }})</a> -->
                             </li>                            
                         </ul>
                     </li>

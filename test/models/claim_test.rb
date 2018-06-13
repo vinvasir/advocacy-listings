@@ -32,4 +32,19 @@ class ClaimTest < ActiveSupport::TestCase
       @user_1.claim(@org)
     end
   end
+
+  test "can show whether a user owns an org" do
+    @user_2.claim @org
+    org_2 = FactoryBot.create(:organization)
+    @user_2.claim org_2
+
+    org_3 = FactoryBot.create(:organization)
+
+    Claim.where(user: @user_2, organization: @org).first.update(approved: true)
+    Claim.where(user: @user_2, organization: org_2).first.update(approved: true)
+
+    assert_includes @user_2.own_organizations,@org 
+    assert_includes @user_2.own_organizations, org_2
+    refute_includes @user_2.own_organizations, org_3
+  end
 end
