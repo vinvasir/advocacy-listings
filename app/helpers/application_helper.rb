@@ -3,7 +3,7 @@ module ApplicationHelper
     return false unless is_logged_in? user
 
     if user.respond_to?(:has_consented_cookie?)
-      return true if user.has_consented_cookie?
+      return true unless user.has_consented_cookie?
     end
 
     false
@@ -13,7 +13,7 @@ module ApplicationHelper
     return false unless is_logged_in? user
 
     if user.respond_to?(:has_consented_age?)
-      return true if user.has_consented_age?
+      return true unless user.has_consented_age?
     end
 
     false
@@ -23,7 +23,7 @@ module ApplicationHelper
     return false unless is_logged_in? user
 
     if user.respond_to?(:has_consented_privacy_terms?)
-      return true if user.has_consented_privacy_terms?
+      return true unless user.has_consented_privacy_terms?
     end
 
     false

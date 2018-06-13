@@ -3,7 +3,10 @@
   <% if show_cookie_form?(current_user) %>
     <hr>
     <div class="panel panel-default">
-      <%= @cookie %>
+      <h4>Cookie policy</h4>
+      <p>
+        <%= @cookie %>
+      </p>
 
       <form action="/policies/user_terms/cookie/accept" accept-charset="UTF-8" method="post"><input name"=utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="<%=  %>">
               <input type="submit" name="commit" value="Accept" class="btn btn-success" data-disable-with="Accept">
@@ -15,7 +18,10 @@
   <% if show_age_form?(current_user) %>
     <hr>
     <div class="panel panel-default">
-      <%= @age %>
+      <h4>Age policy</h4>
+      <p>      
+        <%= @age %>
+      </p>
 
       <form action="/policies/user_terms/age/accept" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="<%= %>">
               <input type="submit" name="commit" value="Accept" class="btn btn-success" data-disable-with="Accept">
@@ -27,7 +33,10 @@
   <% if show_privacy_form?(current_user) %>
     <hr>
     <div class="panel panel-default">
-      <%= @privacy_terms %>
+      <h4>Privacy policy</h4>
+      <p>      
+        <%= @privacy_terms %>
+      </p>
 
       <form action="/policies/user_terms/privacy_terms/accept" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="<%= %>">
               <input type="submit" name="commit" value="Accept" class="btn btn-success" data-disable-with="Accept">
