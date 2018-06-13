@@ -2,20 +2,29 @@
   <div class="col-md-3">
     <div class="panel panel-default">
       <div class="panel-body">
-        <nav class="nav nav-stacked">
+        <ul class="nav nav-pills nav-stacked">
           <% if !!current_user %>
             <% unless current_user.favorite_organizations.include?(@organization) %>
-              <li>
+              <li role="presentation">
                 <%= link_to "Add to favorites", organization_favorites_path(@organization), method: :post %>
               </li>
             <% else %>
-              <li>
+              <li role="presentation">
                 <%= link_to "Remove from favorites", organization_favorite_path(@organization, @favorite), method: :delete %>
               </li>
             <% end %>
-          <% end %>        
-        </nav>
-        
+
+            <% unless current_user.claimed_organizations.include?(@organization) %>
+              <li role="presentation">
+                <%= link_to "Claim", organization_claims_path(@organization), class: "btn danger", method: :post %>
+              </li>
+            <% else %>
+              <li role="presentation">
+                <%= link_to "Withdraw claim", organization_claim_path(@organization, @favorite), class: "btn danger", method: :delete %>
+              </li>
+            <% end %>            
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
