@@ -1,7 +1,7 @@
 <ul class="list-group">
   <% @organizations.each do |org| %>
     <li class="list-group-item">
-      <%= org.title %>
+      <%= link_to org.title, area_organization_path(current_area, org)  %>
     </li>
   <% end %>
 </ul>

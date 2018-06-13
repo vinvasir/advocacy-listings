@@ -32,4 +32,14 @@ module ApplicationHelper
   def is_logged_in?(user)
     return !!user
   end
+
+  def approval_status_for(claim)
+    if claim.approved
+      return "Approved"
+    elsif !claim.approved && !claim.reason
+      return "Pending"
+    elsif !claim.approved && !!claim.reason
+      return "Rejected"
+    end
+  end
 end

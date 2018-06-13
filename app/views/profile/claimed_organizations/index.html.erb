@@ -1,7 +1,7 @@
 <ul class="list-group">
   <% @organizations.each do |org| %>
     <li class="list-group-item">
-      <%= org.title %>
+      <%= link_to org.title, organization_claim_path(org, org.claims.where(user: current_user).first)  %>
     </li>
   <% end %>
 </ul>
