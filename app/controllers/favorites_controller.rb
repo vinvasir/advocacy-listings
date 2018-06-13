@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   before_action :set_org
 
   def create
-    if current_user.favorite_organizations << @org
+    if !!current_user.claim(@org)
       flash[:success] = "Organization added to your favorites"
     else
       flash[:error] = "Could not add to favorites"
