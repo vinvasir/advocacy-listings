@@ -3,6 +3,8 @@ class Organization < ApplicationRecord
   belongs_to :category
   belongs_to :submitter, class_name: "User", foreign_key: "user_id", optional: true
 
+  has_many :favorites, as: :favoritable
+
   has_many :claims
   has_many :claimants, through: :claims, class_name: "User", source: "user_id"
 

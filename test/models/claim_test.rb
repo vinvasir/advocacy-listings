@@ -23,7 +23,7 @@ class ClaimTest < ActiveSupport::TestCase
     end
 
 
-    @org = user_1.submitted_organizations.create!(title: "Some org", mission: "who knows?")
+    @org = user_1.submitted_organizations.create!(title: "Some org", mission: "who knows?", area: usa, category: health)
 
     user_2.claim(@org)
     user_3.claim(@org)
