@@ -13,11 +13,14 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
+    current_user.favorites.where(favoritable: @org).destroy_all
+
+    redirect_to area_organization_path(current_area, @org)
   end
 
   private
 
     def set_org
-      @org = Organization.find(params[:id])
+      @org = Organization.find(params[:organization_id])
     end
 end

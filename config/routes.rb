@@ -17,9 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :organizations, only: [] do
-    member do
-      resources :favorites, only: [:create, :destroy]
-    end
+    resources :favorites, only: [:create, :destroy]
   end
 
   get '/categories/:id/organizations', to: 'organizations#index', as: 'category_organizations'

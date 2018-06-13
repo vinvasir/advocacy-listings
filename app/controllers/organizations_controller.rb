@@ -11,6 +11,10 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find_by(id: params[:id])
+
+    if !!current_user
+      @favorite = Favorite.where(favoritable: @organization, user: current_user).first
+    end
   end
 
   def create

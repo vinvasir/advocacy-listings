@@ -3,10 +3,19 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <nav class="nav nav-stacked">
-          <li>
-            <%= link_to "Add to favorites", favorites_path(@organization), method: :post %>
-          </li>          
+          <% if !!current_user %>
+            <% unless current_user.favorite_organizations.include?(@organization) %>
+              <li>
+                <%= link_to "Add to favorites", organization_favorites_path(@organization), method: :post %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "Remove from favorites", organization_favorite_path(@organization, @favorite), method: :delete %>
+              </li>
+            <% end %>
+          <% end %>        
         </nav>
+        
       </div>
     </div>
   </div>
