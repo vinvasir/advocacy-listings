@@ -14,7 +14,8 @@ class ClaimsController < ApplicationController
     if !!current_user.claim(@org, params[:claim][:application])
       flash[:success] = "Thank you! We will be in touch as we review your application."
     else
-      flash[:error] = "Sorry, you cannot apply to claim this organization at this time."
+      flash.now[:error] = "Sorry, something went wrong. Please try again."
+      render :new
     end
 
     redirect_to area_organization_path(current_area, @org)

@@ -29,6 +29,7 @@ class OrganizationsController < ApplicationController
       flash[:success] = "Organization successfully created"
       redirect_to area_organization_path(@area, @organization)
     else
+      flash.now[:error] = "Something went wrong."
       render :new
     end
   end
@@ -44,6 +45,7 @@ class OrganizationsController < ApplicationController
       flash[:success] = "Organization successfully updated"
       redirect_to area_organization_path(@area, @organization)
     else
+      flash.now[:error] = "Something went wrong."
       render :edit
     end
   end
