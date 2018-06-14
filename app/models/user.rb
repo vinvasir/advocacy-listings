@@ -13,9 +13,8 @@ class User < ApplicationRecord
   has_many :approved_claims, -> { where approved: true }, class_name: "Claim"
   has_many :own_organizations, through: :approved_claims, source: :organization
 
-  def pending_claimed_organizations  
-    claims.where(approved: false).includes(:organization).map(&:organization)
-  end
+  has_many :pending_claims, -> { where approved: false }, class_name: "Claim"
+  has_many :pending_claimed_organizations, through: :pending_claims, source: :organization
 
   has_many :favorites
   has_many :favorite_organizations, through: :favorites, source: :favoritable, source_type: "Organization"
