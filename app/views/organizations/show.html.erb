@@ -22,7 +22,11 @@
               <li role="presentation">
                 <%= link_to "Withdraw claim", organization_claim_path(@organization, @claim), class: "btn danger", method: :delete %>
               </li>
-            <% end %>            
+            <% end %>
+
+          <!-- guest user behavior -->
+          <% else %>
+                Please <%= link_to "log in", new_user_session_path %> or <%= link_to "register", new_user_registration_path %> to save or claim this organization.         
           <% end %>
         </ul>
       </div>
