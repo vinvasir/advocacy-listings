@@ -56,4 +56,19 @@ class ClaimTest < ActiveSupport::TestCase
     refute_includes @user_2.pending_claimed_organizations, @org
     refute_includes @user_2.pending_claimed_organizations, org_2
   end
+
+  test "can show all organizations that have pending claims" do
+    @user_2.claim @org, "I have an email under their domain name."
+    org_2 = FactoryBot.create(:organization)
+    @user_2.claim org_2, "I have an email under their domain name."
+
+    org_3 = FactoryBot.create(:organization)
+    claim_3 = Claim.create!(organization: org_3, user: @user_2, application: "able bable app", approved: true)
+
+    pending_claims = Claim.pending
+
+    assert_includes pending_claims, @org.claims.first
+    assert_includes pending_claims, org_2.claims.first
+    refute_includes pending_claims, claim_3
+  end
 end
