@@ -11,7 +11,8 @@ class Organization < ApplicationRecord
   has_many :claims
   has_many :claimants, through: :claims, class_name: "User", source: :user
 
-  # has_many :approved_claims, -> { where approved: true }, class_name: "Claim"
+  has_many :approved_claims, -> { where approved: true }, class_name: "Claim"
+  has_many :owners, through: :approved_claims, source: :user
 
   scope :in_area, -> (area) { where(area_id: area.descendant_ids.push(area.id)) }
   scope :from_category, -> (category) { where(category_id: category.descendant_ids.push(category.id)) }

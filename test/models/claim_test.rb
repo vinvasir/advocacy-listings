@@ -51,6 +51,8 @@ class ClaimTest < ActiveSupport::TestCase
 
     assert_includes @user_2.own_organizations, @org 
     assert_includes @user_2.own_organizations, org_2
+    assert_includes @org.owners, @user_2
+    assert_includes org_2.owners, @user_2
 
     refute_includes @user_2.own_organizations, org_3
     refute_includes @user_2.pending_claimed_organizations, @org
