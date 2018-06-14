@@ -17,7 +17,7 @@
 
             <% unless current_user.claimed_organizations.include?(@organization) %>
               <li role="presentation">
-                <%= link_to "Claim", organization_claims_path(@organization), class: "btn danger", method: :post %>
+                <%= link_to "Apply to claim this organization", new_organization_claim_path(@organization), class: "btn danger" %>
               </li>
             <% else %>
               <li role="presentation">

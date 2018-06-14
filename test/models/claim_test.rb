@@ -33,6 +33,12 @@ class ClaimTest < ActiveSupport::TestCase
     end
   end
 
+  test "successfully shows pending claims" do
+    @user_3.claim @org, "I have an email under their domain name."
+
+    assert_includes @user_3.pending_claimed_organizations, @org
+  end
+
   test "can show whether a user owns an org" do
     @user_2.claim @org, "I have an email under their domain name."
     org_2 = FactoryBot.create(:organization)

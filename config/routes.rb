@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :organizations, only: [] do
-    resources :claims, only: [:create, :show, :destroy]
+    resources :claims, only: [:new, :create, :show, :destroy]
     resources :favorites, only: [:create, :destroy]
   end
 

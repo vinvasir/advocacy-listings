@@ -10,9 +10,6 @@ class User < ApplicationRecord
   has_many :claims
   has_many :claimed_organizations, through: :claims, source: :organization
 
-  # has_many :approved_claims, class_name: "Claim", foreign_key: "user_id", dependent: :nullify, -> { joins(:claims).where("claims.approved = ?", true) }
-  # has_many :own_organizations, through: :approved_claims, source: :organization
-
   def approved_claims
     claims.where(approved: true)
   end
@@ -22,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def pending_claimed_organizations  
-    claims.where.not(approved: true).includes(:organization).map(&:organization)
+    claims.where(approved: false).includes(:organization).map(&:organization)
   end
 
   has_many :favorites

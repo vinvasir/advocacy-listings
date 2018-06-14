@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Please state why you should be the admin for <strong><%= @org.title %></strong></h4>
+        <h4><i>ex. you have an email address associated with the org's website, you are
+          a member of its management or board, you are a spokesperson for the org, etc.</i></h4>
+      </div>
+
+      <div class="panel-body">
+        <%= form_for [@org, @claim] do |f| %>
+            <div class="form-group">
+              <%= f.label :application, class: "control-label" %>
+              <%= f.text_area :application, class: "form-control", rows: 20 %>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Apply</button>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>  
+</div>
