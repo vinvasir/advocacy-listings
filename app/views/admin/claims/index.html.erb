@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>All pending organization claims</h4>
+      </div>
+
+      <div class="panel-body">
+        <ul class="list-group">
+          <% @organizations.each do |org| %>
+            <li class="list-group-item">
+              <%= link_to org.title, organization_claim_path(org, org.claims.where(user: current_user).first)  %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

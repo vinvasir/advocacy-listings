@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     resources :claimed_organizations, only: [:index]
   end
 
+  namespace :admin do
+    resources :claims, only: [:index, :edit, :update]
+  end
+
   resources :organizations, only: [] do
     resources :claims, only: [:new, :create, :show, :destroy]
     resources :favorites, only: [:create, :destroy]
