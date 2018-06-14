@@ -51,6 +51,6 @@ class Organization < ApplicationRecord
   end
 
   def hide_from_algolia?
-    self.live?
+    !self.live?
   end  
 end
