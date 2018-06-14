@@ -41,13 +41,13 @@ class Organization < ApplicationRecord
       }
     end
 
-    # attribute :owners do
-    #   owners.map do |owner|
-    #     {
-    #       email: owner.email
-    #     }
-    #   end
-    # end
+    attribute :owners do
+      owners.map do |owner|
+        {
+          email: owner.email
+        }
+      end
+    end
   end
 
   def hide_from_algolia?
