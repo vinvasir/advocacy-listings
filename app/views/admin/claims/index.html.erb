@@ -1,18 +1,36 @@
 <div class="row">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>All pending organization claims</h4>
       </div>
 
       <div class="panel-body">
-        <ul class="list-group">
-          <% @organizations.each do |org| %>
-            <li class="list-group-item">
-              <%= link_to org.title, organization_claim_path(org, org.claims.where(user: current_user).first)  %>
-            </li>
-          <% end %>
-        </ul>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Claimant</th>
+              <th>Organization</th>
+              <th>Application</th>
+              <th>Approved?</th>
+              <th>Admin feedback</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @claims.each do |claim| %>
+              <tr>
+                <th><%= claim.user.email %></th>
+                <th><%= claim.organization.title %></th>
+                <th><%= claim.application %></th>
+                <th><%= claim.approved? ? 'Yes' : 'Not. Yet.' %></th>
+                <th><%= claim.reason %></th>
+                <th><%= link_to "Respond", edit_admin_claim_path(claim), class: 'btn btn-primary btn-xs' %></th>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
