@@ -12,8 +12,8 @@ class ClaimTest < ActiveSupport::TestCase
   test "allows users to have claimed_organizations and orgs to have claimants" do
     @user_1.submitted_organizations << @org
     
-    @user_2.claim(@org)
-    @user_3.claim(@org)
+    @user_2.claim(@org, "I have an email under their domain name.")
+    @user_3.claim(@org, "I have an email under their domain name.")
 
     assert_includes @user_2.reload.claimed_organizations, @org
     assert_includes @user_3.reload.claimed_organizations, @org
@@ -26,17 +26,17 @@ class ClaimTest < ActiveSupport::TestCase
   end
 
   test "should not allow one user to claim an org multiple times" do
-    @user_1.claim @org
+    @user_1.claim @org, "I have an email under their domain name."
 
     assert_raise do
-      @user_1.claim(@org)
+      @user_1.claim(@org, "I have an email under their domain name.")
     end
   end
 
   test "can show whether a user owns an org" do
-    @user_2.claim @org
+    @user_2.claim @org, "I have an email under their domain name."
     org_2 = FactoryBot.create(:organization)
-    @user_2.claim org_2
+    @user_2.claim org_2, "I have an email under their domain name."
 
     org_3 = FactoryBot.create(:organization)
 

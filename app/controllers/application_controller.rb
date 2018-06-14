@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_has_consented_to_all?
-    return unless current_user
+    return false unless current_user
 
     (current_user.has_consented_cookie? &&
      current_user.has_consented_age? &&

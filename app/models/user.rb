@@ -28,8 +28,8 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_organizations, through: :favorites, source: :favoritable, source_type: "Organization"
 
-  def claim(organization)
-    claimed_organizations << organization
+  def claim(organization, application)
+    claims.create(organization: organization, application: application)
   end
 
   def favorite(organization)
