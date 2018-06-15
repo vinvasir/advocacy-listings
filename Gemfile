@@ -11,6 +11,9 @@ gem "algoliasearch-rails"
 # Use ancestry for nested sets business logic
 gem 'ancestry'
 
+# Use webpackcer to mix-in SPA features
+gem 'webpacker', '~> 3.5'
+
 # Use pry for debugging
 gem 'pry'
 
