@@ -8,3 +8,18 @@
 // layout file, like app/views/layouts/application.html.erb
 
 console.log('Hello World from Webpacker')
+import TurbolinksAdapter from 'vue-turbolinks';
+import Vue from 'vue/dist/vue.esm'
+import ListingSearch from '../components/Search.vue'
+
+Vue.use(TurbolinksAdapter)
+
+document.addEventListener('turbolinks:load', () => {
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: "Can you say hello?"
+    },
+    components: { ListingSearch }
+  })
+})

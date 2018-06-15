@@ -1,4 +1,6 @@
 <div class="row">
+  <%= render 'partials/search' %>
+
   <% @categories.each do |category| %>
     <div class="col-md-4">
       <h5><%= category.name %></h5>
