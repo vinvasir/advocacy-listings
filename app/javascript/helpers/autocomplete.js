@@ -25,8 +25,8 @@ export const listingsautocomplete = (selector, {categoryId, areaIds}) => {
       },
       footer: `<div>Search by Algolia</div>`,
       suggestion (suggestion) {
-        return `<span><a href="">${suggestion.title}</a> in ${suggestion.category.name}</span> 
-                <span>${suggestion.created_at_human} &bull; ${suggestion.area.name}</span>`
+        return `<span><a href="/areas/${suggestion.area.slug}/organizations/${suggestion.id}">${suggestion.title}</a> in ${suggestion.category.name}</span> 
+                <span>${suggestion.created_at} &bull; ${suggestion.area.name}</span>`
       }
     },
     display: 'title',
@@ -42,8 +42,8 @@ export const listingsautocomplete = (selector, {categoryId, areaIds}) => {
       templates: {
         header: `<div class="aa-suggestions-category">This category</div>`,
         suggestion (suggestion) {
-          return `<span><a href="/${suggestion.area.slug}/${suggestion.id}">${suggestion.title}</a> in ${suggestion.category.name}</span> 
-                <span>${suggestion.created_at_human} &bull; ${suggestion.area.name}</span>`
+          return `<span><a href="/areas/${suggestion.area.slug}/organizations/${suggestion.id}">${suggestion.title}</a> in ${suggestion.category.name}</span> 
+                <span>${suggestion.created_at} &bull; ${suggestion.area.name}</span>`
         }
       },
       display: 'title',

@@ -21,7 +21,15 @@ class Organization < ApplicationRecord
   scope :not_live, -> { where.not(live: true) }
 
   algoliasearch per_environment: true, unless: :hide_from_algolia?, disable_indexing: Rails.env.test? do
-    attribute :id, :title, :mission, :created_at, :updated_at
+    attribute :id, :title, :mission
+
+    attribute :created_at do
+      created_at.strftime("%b %d, %Y")
+    end
+
+    attribute :updated_at do
+      updated_at.strftime("%b %d, %Y")
+    end
 
     attribute :area do
       { 
