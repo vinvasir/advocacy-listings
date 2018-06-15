@@ -24,9 +24,7 @@ class User < ApplicationRecord
   end
 
   def favorite(organization)
-    return favorite_organizations << organization unless favorite_organizations.include?(organization)
-
-    false
+    favorites.create(favoritable: organization)
   end
 
   def is_admin?

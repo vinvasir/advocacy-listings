@@ -30,7 +30,9 @@ class FavoriteTest < ActiveSupport::TestCase
 
   test "should not allow duplicate favoriting" do
     @user_3.favorite @org
-    @user_3.favorite @org
+    assert_raise do 
+      @user_3.favorite @org
+    end
 
     assert_equal 1, @user_3.favorites.where(favoritable: @org).count
   end
