@@ -5,14 +5,17 @@
   </head>
 
   <body>
-    <%= render 'layouts/partials/nav' %>
+    <div id="app">
+      <%= render 'layouts/partials/nav' %>
 
-    <div id="app" class="container">
-      <%= render 'layouts/partials/flash' %>
+      <div class="container">
+        <%= render 'layouts/partials/flash' %>
 
-      <%= yield %>
+        <%= yield %>
 
-      <%= render 'layouts/partials/consent_forms' %>
+        <%= render 'layouts/partials/consent_forms' %>
+      </div>
+
     </div>
 
     <%= render 'layouts/partials/scripts' %>

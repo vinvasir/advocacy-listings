@@ -5,6 +5,7 @@
     "@rails/webpacker": "3.5",
     "algoliasearch": "^3.27.1",
     "autocomplete.js": "^0.30.0",
+    "axios": "^0.18.0",
     "vue": "^2.5.16",
     "vue-loader": "14.2.2",
     "vue-template-compiler": "^2.5.16",

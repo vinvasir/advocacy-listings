@@ -17,7 +17,7 @@ class ClaimsController < ApplicationController
           recipient: admin_user, 
           actor: current_user, 
           action: "claimed", 
-          notifiable: Claim.where(user: current_user, organization: @org).first
+          notifiable: @org
         )
       end
 
