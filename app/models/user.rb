@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   include PolicyManager::Concerns::UserBehavior
 
+  scope :admins, -> { where email: ["prat.vasireddy@gmail.com"] }
+
   has_many :submitted_organizations, class_name: "Organization", foreign_key: "user_id", dependent: :nullify
   has_many :claims
   has_many :claimed_organizations, through: :claims, source: :organization
@@ -18,6 +20,8 @@ class User < ApplicationRecord
 
   has_many :favorites
   has_many :favorite_organizations, through: :favorites, source: :favoritable, source_type: "Organization"
+
+  has_many :notifications, foreign_key: :recipient_id
 
   def claim(organization, application)
     claims.create(organization: organization, application: application)

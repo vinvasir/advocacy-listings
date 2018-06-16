@@ -12,6 +12,15 @@ class ClaimsController < ApplicationController
 
   def create
     if !!current_user.claim(@org, params[:claim][:application])
+      User.admins.each do |admin_user|
+        Notification.create(
+          recipient: admin_user, 
+          actor: current_user, 
+          action: "claimed", 
+          notifiable: Claim.where(user: current_user, org: @org).first
+        )
+      end
+
       flash[:success] = "Thank you! We will be in touch as we review your application."
     else
       flash.now[:error] = "Sorry, something went wrong. Please try again."
