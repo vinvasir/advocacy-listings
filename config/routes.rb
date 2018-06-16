@@ -32,4 +32,10 @@ Rails.application.routes.draw do
   end
 
   get '/categories/:id/organizations', to: 'organizations#index', as: 'category_organizations'
+
+  resources :notifications, only: [:index] do
+    collection do
+      post :mark_as_read
+    end
+  end
 end

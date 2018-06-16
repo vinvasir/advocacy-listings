@@ -14,6 +14,9 @@ gem 'ancestry'
 # Use webpackcer to mix-in SPA features
 gem 'webpacker', '~> 3.5'
 
+# Use jsonapi-rails for json serialization
+gem 'jsonapi-rails'
+
 # Use pry for debugging
 gem 'pry'
 
