@@ -5,7 +5,9 @@
     </a>
 
     <ul class="dropdown-menu">
-      <li v-for="n in notifications">{{ n.actor.email }} {{ n.action }} {{ n.notifiable.title }}</li>
+      <li v-for="n in notifications" @click="markAsRead(n.id)">
+        {{ n.actor.email }} {{ n.action }} {{ n.notifiable.title }}
+      </li>
 
       <hr>
     </ul>    
@@ -13,8 +15,6 @@
 </template>
 
 <script type="text/javascript">
-  import axios from 'axios'
-
   export default {
     created() {
       axios.get('/notifications')
@@ -25,6 +25,12 @@
     data() {
       return {
         notifications: []
+      }
+    },
+    methods: {
+      markAsRead(id) {
+        axios.post(`/notifications/${id}/read`)
+             .then(({data}) => console.log(data))
       }
     }
   }

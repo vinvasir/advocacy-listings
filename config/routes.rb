@@ -37,5 +37,7 @@ Rails.application.routes.draw do
     collection do
       post :mark_as_read
     end
+
+    post '/read', to: 'notifications#read_one'
   end
 end

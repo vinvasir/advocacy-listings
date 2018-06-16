@@ -10,10 +10,22 @@
 console.log('Hello World from Webpacker')
 import TurbolinksAdapter from 'vue-turbolinks';
 import Vue from 'vue/dist/vue.esm'
+
+import axios from 'axios'
+
 import ListingSearch from '../components/Search.vue'
 import AppNotifications from '../components/Notifications.vue'
 
 Vue.use(TurbolinksAdapter)
+
+window.axios = axios;
+let token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+    console.error('CSRF token not found: ');
+}
 
 document.addEventListener('turbolinks:load', () => {
   const app = new Vue({
