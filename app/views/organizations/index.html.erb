@@ -1,7 +1,28 @@
-<ul class="list-group">
+<div class="row">
+  <%= render 'partials/search' %>
+
+  <h4><%= @category.parent.name %> &nbsp; > &nbsp; <%= @category.name %></h4>
+
   <% @organizations.each do |org| %>
-    <li class="list-group-item">
-      <%= link_to org.title, area_organization_path(current_area, org)  %>
-    </li>
+    <div class="media">
+      <div class="media-body">
+        <h5>
+          <strong>
+            <%= link_to org.title, area_organization_path(current_area, org) %>
+          </strong>
+
+          <% if @area.children.count > 0 %>
+            in <%= org.area.name %>
+          <% end %>
+        </h5>
+
+        <ul class="list-inline">
+          <li><time>submitted <%= time_ago_in_words org.created_at %> ago</time></li>
+          <% if !!org.submitter %>
+            <li>by <%= org.submitter.email %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

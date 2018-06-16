@@ -1,6 +1,6 @@
 <% if !!@category %>
   <listing-search 
-    category-id="<% @category.id %>"
+    category-id="<%= @category.id %>"
     :area-ids="<%= @area.descendants.pluck(:id).push(@area.id) %>">
   </listing-search>
 <% else %>

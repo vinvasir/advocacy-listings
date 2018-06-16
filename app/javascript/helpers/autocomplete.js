@@ -37,7 +37,7 @@ export const listingsautocomplete = (selector, {categoryId, areaIds}) => {
     sources.unshift({
       source: autocomplete.sources.hits(listings, { 
         hitsPerPage: 5, 
-        filters: `(${areaFilters}) AND category.id = ${categoryId} AND live = 1`
+        filters: `(${areaFilters}) AND category.id = ${categoryId}`
       }),
       templates: {
         header: `<div class="aa-suggestions-category">This category</div>`,
