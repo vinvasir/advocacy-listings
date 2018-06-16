@@ -30,7 +30,10 @@
     methods: {
       markAsRead(id) {
         axios.post(`/notifications/${id}/read`)
-             .then(({data}) => console.log(data))
+             .then(({data}) => {
+              console.log(data)
+              window.location.href = data.post_read_path
+             })
       }
     }
   }

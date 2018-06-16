@@ -17,7 +17,7 @@ class NotificationsController < ApplicationController
   def read_one
     @notification = Notification.find(params[:notification_id])
     if @notification.update(read_at: Time.zone.now)
-      render json: {success: true}
+      render json: {success: true, post_read_path: @notification.notifiable.post_read_path_for(current_user)}
     end
   end
 end

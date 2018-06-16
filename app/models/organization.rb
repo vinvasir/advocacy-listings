@@ -52,5 +52,11 @@ class Organization < ApplicationRecord
 
   def hide_from_algolia?
     !self.live?
-  end  
+  end
+
+  def post_read_path_for(user)
+    @claim = Claim.where(organization: self, user: user).first
+
+    Rails.application.routes.url_helpers.edit_admin_claim_path(@claim)
+  end
 end
