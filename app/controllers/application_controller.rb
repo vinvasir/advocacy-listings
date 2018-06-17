@@ -25,18 +25,21 @@ class ApplicationController < ActionController::Base
   end
 
   def set_policies
-    return unless current_user
+    return unless user_signed_in?
 
     unless current_user.respond_to?(:has_consented_cookie?) && current_user.has_consented_cookie?
-      @cookie = PolicyManager::Term.where(rule: "cookie").last.description
+      c = PolicyManager::Term.where(rule: "cookie").last
+      @cookie = c.description if !!c
     end
 
     unless current_user.respond_to?(:has_consented_age?) && current_user.has_consented_age?
-      @age = PolicyManager::Term.where(rule: "age").last.description
+      a = PolicyManager::Term.where(rule: "age").last
+      @age = a.description if !!a
     end
 
     unless current_user.respond_to?(:has_consented_privacy_terms?) && current_user.has_consented_privacy_terms?
-      @privacy_terms = PolicyManager::Term.where(rule: "privacy_terms").last.description
+      pt = PolicyManager::Term.where(rule: "privacy_terms").last
+      @privacy_terms = pt.description if !!pt
     end
   end
 
