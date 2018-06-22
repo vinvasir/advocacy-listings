@@ -1,6 +1,6 @@
 class Admin::Datatable::OrganizationsController < Admin::Datatable::DatatableController
   def displayable_columns
-    ['title', 'mission', 'area_id', 'category_id', 'live']
+    ['id', 'title', 'mission', 'area_id', 'category_id', 'live']
   end
 
   def updatable_columns
