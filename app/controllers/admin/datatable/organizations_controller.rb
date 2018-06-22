@@ -1,6 +1,6 @@
 class Admin::Datatable::OrganizationsController < Admin::Datatable::DatatableController
   def displayable_columns
-    ['id', 'title', 'mission', 'area_id', 'category_id', 'live']
+    ['id', 'title', 'mission', 'areas.name', 'category_id', 'live']
   end
 
   def updatable_columns
@@ -20,7 +20,7 @@ class Admin::Datatable::OrganizationsController < Admin::Datatable::DatatableCon
   private
 
     def builder
-      ::Organization
+      ::Organization.joins(:area).select("organizations.*, areas.*")
     end
 
     def org_params
