@@ -15,6 +15,7 @@ import axios from 'axios'
 
 import ListingSearch from '../components/Search.vue'
 import AppNotifications from '../components/Notifications.vue'
+import DataTable  from '../components/DataTable.vue'
 
 Vue.use(TurbolinksAdapter)
 
@@ -33,6 +34,6 @@ document.addEventListener('turbolinks:load', () => {
     data: {
       message: "Can you say hello?"
     },
-    components: { AppNotifications, ListingSearch }
+    components: { AppNotifications, ListingSearch, DataTable }
   })
 })
