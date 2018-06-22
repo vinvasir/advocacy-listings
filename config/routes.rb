@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     resources :claims, only: [:index, :edit, :update]
 
     namespace :datatable do
-      get '/admin/:table', to: 'admin#index'
-      
+      get ':table', to: 'page#index'
+
       resources :organizations, only: [:index]
     end
   end
