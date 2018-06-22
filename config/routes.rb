@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     namespace :datatable do
       get 'table-for/:table', to: 'page#index'
 
-      resources :organizations, only: [:index]
+      resources :organizations, only: [:index, :update]
     end
   end
 

@@ -187,7 +187,13 @@
                 axios.get(`${this.endpoint}?${this.getQueryParamaters()}`)
                      .then(({data}) => {
                         this.table = data.data.table;
-                        this.displayable = data.data.displayable;
+                        this.displayable = data.data.displayable.map(displayable => {
+                            if (displayable.split(' ').indexOf('as') > -1) {
+                                return displayable.split(' ')[2];
+                            }
+
+                            return displayable;
+                        });
                         this.updatable = data.data.updatable;
                         this.records = data.data.records;
                      })
