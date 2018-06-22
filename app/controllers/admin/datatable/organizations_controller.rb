@@ -20,7 +20,7 @@ class Admin::Datatable::OrganizationsController < Admin::Datatable::DatatableCon
   private
 
     def builder
-      ::Organization.joins(:area).select("organizations.*, areas.*")
+      ::Organization.joins(:area)
     end
 
     def org_params
