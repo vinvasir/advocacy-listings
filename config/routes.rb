@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :claims, only: [:index, :edit, :update]
 
     namespace :datatable do
-      get ':table', to: 'page#index'
+      get 'table-for/:table', to: 'page#index'
 
       resources :organizations, only: [:index]
     end
