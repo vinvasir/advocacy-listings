@@ -5,7 +5,7 @@ class Admin::Datatable::DatatableController < Admin::AdminController
           'table' => builder.table_name,
           'displayable' => displayable_columns,
           'updatable' => updatable_columns,
-          'records' => records.pluck(*displayable_columns)
+          'records' => records.select(*displayable_columns)
         }
       }
 

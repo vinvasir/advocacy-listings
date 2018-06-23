@@ -67,4 +67,12 @@ class Organization < ApplicationRecord
     
     self.area_id = area.id
   end
+
+  def category_name=(name)
+    category = Category.find_by(name: name)
+
+    category = Category.create(name: name) unless !!category
+
+    self.category_id = category.id
+  end
 end

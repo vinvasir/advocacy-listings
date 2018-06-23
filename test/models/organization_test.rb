@@ -49,4 +49,18 @@ class OrganizationTest < ActiveSupport::TestCase
     assert_equal "New Area", org.reload.area.name
     assert_equal 1, Area.where(name: "New Area").count
   end
+
+  test "has a setter for category_name that does not create duplicates" do
+    org = @south.organizations.create!(title: "Fake Org", category: Category.create(name: "blank cat"), mission: "wevs")
+
+    org.update(category_name: "some category")
+
+    assert_equal @cat.id, org.category_id
+    assert_equal 1, Category.where(name: "some category").count
+
+    org.update(category_name: "another category")
+
+    assert_equal "another category", org.reload.category.name
+    assert_equal 1, Category.where(name: "another category").count
+  end  
 end
