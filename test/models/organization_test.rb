@@ -35,4 +35,18 @@ class OrganizationTest < ActiveSupport::TestCase
     assert_includes Organization.from_category(@cycling), fake_org
     refute_includes Organization.from_category(other_cat), fake_org
   end
+
+  test "has a setter for area_name that does not create duplicates" do
+    org = @cat.organizations.create!(title: "Fake Org", area: @usa, mission: "wevs")
+
+    org.update(area_name: "US South")
+
+    assert_equal @south.id, org.area_id
+    assert_equal 1, Area.where(name: "US South").count
+
+    org.update(area_name: "New Area")
+
+    assert_equal "New Area", org.reload.area.name
+    assert_equal 1, Area.where(name: "New Area").count
+  end
 end

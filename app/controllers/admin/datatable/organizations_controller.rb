@@ -10,18 +10,10 @@ class Admin::Datatable::OrganizationsController < Admin::Datatable::DatatableCon
   def update
     @org = Organization.find(params[:id])
 
-    if params.key?('areas.name')
-      if @org.update(org_params)
-        render json: {success: true, org: @org}
-      else
-        head :error
-      end
+    if @org.update(org_params)
+      render json: {success: true, org: @org}
     else
-      if @org.update(org_params)
-        render json: {success: true, org: @org}
-      else
-        head :error
-      end      
+      head :error
     end
   end
 

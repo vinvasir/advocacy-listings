@@ -59,4 +59,12 @@ class Organization < ApplicationRecord
 
     Rails.application.routes.url_helpers.edit_admin_claim_path(@claim)
   end
+
+  def area_name=(name)
+    area = Area.find_by(name: name)
+
+    area = Area.create(name: name) unless !!area
+    
+    self.area_id = area.id
+  end
 end
