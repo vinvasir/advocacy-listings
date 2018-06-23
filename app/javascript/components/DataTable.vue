@@ -194,7 +194,13 @@
 
                             return displayable;
                         });
-                        this.updatable = data.data.updatable;
+                        this.updatable = data.data.updatable.map(updatable => {
+                            if (updatable.split(' ').indexOf('as') > -1) {
+                                return updatable.split(' ')[2];
+                            }
+
+                            return updatable;
+                        });;
                         this.records = data.data.records;
                      })
             },
