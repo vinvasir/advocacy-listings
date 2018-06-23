@@ -5,11 +5,15 @@ class Admin::Datatable::DatatableController < Admin::AdminController
           'table' => builder.table_name,
           'displayable' => displayable_columns,
           'updatable' => updatable_columns,
-          'records' => records
+          'records' => records.pluck(*displayable_columns)
         }
       }
 
     render json: data
+  end
+
+  def selectable_columns
+    displayable_columns
   end
 
   def displayable_columns
@@ -23,7 +27,7 @@ class Admin::Datatable::DatatableController < Admin::AdminController
   protected
 
   def records
-    search_query_params.order(id: :asc).limit(params[:limit].to_i).select(*displayable_columns)
+    search_query_params.order(id: :asc).limit(params[:limit].to_i).select(*selectable_columns)
   end
 
   def search_query_params

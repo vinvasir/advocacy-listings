@@ -1,4 +1,8 @@
 class Admin::Datatable::OrganizationsController < Admin::Datatable::DatatableController
+  def selectable_columns
+    displayable_columns << 'area_id'
+  end
+
   def displayable_columns
     ['id', 'title', 'mission', 'areas.name as area_name', 'category_id', 'live']
   end

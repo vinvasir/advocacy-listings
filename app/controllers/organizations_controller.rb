@@ -16,6 +16,11 @@ class OrganizationsController < ApplicationController
       @favorite = Favorite.where(favoritable: @organization, user: current_user).first
       @claim = Claim.where(organization: @organization).first
     end
+
+    respond_to do |f|
+      f.html {  }
+      f.json { render jsonapi: @organization }
+    end
   end
 
   def create
